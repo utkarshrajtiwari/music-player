@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spotify Music Player</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="music-player">
+      <!-- Header -->
+      <header class="player-header">
+        <div class="logo">
+          <i class="fab fa-spotify"></i>
+          <h1>Spotify Player</h1>
+        </div>
+        <div class="user-profile">
+          <i class="fas fa-user-circle"></i>
+          <span>My Music</span>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Sidebar Playlist -->
+        <aside class="sidebar">
+          <div class="playlist-header">
+            <h2><i class="fas fa-music"></i> Playlist</h2>
+            <button class="add-song-btn" onclick="openModal()">
+              <i class="fas fa-plus"></i> Add Song
+            </button>
+          </div>
+          <div class="playlist" id="playlist">
+            <!-- Songs will be added here -->
+          </div>
+        </aside>
+
+        <!-- Now Playing Area -->
+        <main class="now-playing">
+          <div class="album-art-container">
+            <div class="album-art" id="albumArt">
+              <i class="fas fa-music"></i>
+            </div>
+            <div class="song-info">
+              <h2 id="songTitle">Select a song to play</h2>
+              <p id="artistName">No artist selected</p>
+              <p id="albumName">No album selected</p>
+            </div>
+          </div>
+
+          <!-- Hidden Audio Element -->
+          <audio id="audioPlayer"></audio>
+
+          <!-- Player Controls -->
+          <div class="player-controls">
+            <!-- Progress Bar -->
+            <div class="progress-container">
+              <span id="currentTime">0:00</span>
+              <div class="progress-bar" id="progressBar">
+                <div class="progress" id="progress"></div>
+              </div>
+              <span id="duration">0:00</span>
+            </div>
+
+            <!-- Control Buttons -->
+            <div class="control-buttons">
+              <button class="control-btn" id="shuffleBtn">
+                <i class="fas fa-random"></i>
+              </button>
+              <button class="control-btn" id="prevBtn">
+                <i class="fas fa-step-backward"></i>
+              </button>
+              <button class="control-btn play-pause" id="playBtn">
+                <i class="fas fa-play"></i>
+              </button>
+              <button class="control-btn" id="nextBtn">
+                <i class="fas fa-step-forward"></i>
+              </button>
+              <button class="control-btn" id="repeatBtn">
+                <i class="fas fa-redo"></i>
+              </button>
+            </div>
+
+            <!-- Volume Control -->
+            <div class="volume-control">
+              <i class="fas fa-volume-up" id="volumeIcon"></i>
+              <input
+                type="range"
+                id="volumeSlider"
+                min="0"
+                max="100"
+                value="50"
+              />
+              <span id="volumeText">50%</span>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Add Song Modal -->
+    <div class="modal" id="addModal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Add New Song</h2>
+        <form id="songForm">
+          <input
+            type="text"
+            id="titleInput"
+            placeholder="Song Title"
+            required
+          />
+          <input
+            type="text"
+            id="artistInput"
+            placeholder="Artist Name"
+            required
+          />
+          <input
+            type="text"
+            id="albumInput"
+            placeholder="Album Name"
+            required
+          />
+          <input type="file" id="fileInput" accept="audio/*" />
+          <button type="submit">Add Song</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
